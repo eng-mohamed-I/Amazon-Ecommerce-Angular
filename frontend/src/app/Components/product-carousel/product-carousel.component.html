@@ -1,0 +1,72 @@
+<p-carousel 
+  [value]="filteredProducts" 
+  [numVisible]="5" 
+  [numScroll]="3" 
+  [circular]="true" 
+  [autoplayInterval]="3000">
+
+  <ng-template pTemplate="item" let-product>
+    <div class="product-item mx-2 shadow p-5 py-32 rounded relative">
+      <div class="product-image w-[150px] max-h-[200px]">
+        <img [src]="product.image" [alt]="product.title" class=" w-[150px] max-h-[200px]">
+      </div>
+      <div class="product-details">
+        <h4 class="text-lg font-semibold">
+          {{ product.title.split(' ').slice(0, 3).join(' ') + (product.title.split(' ').length > 4 ? '...' : '') }}
+        </h4>
+        <div class="flex justify-between items-center mb-2">
+          <span class="text-gray-800 font-semibold">
+            <span class="text-sm text-gray-500 align-top">EGP</span>
+            <span class="text-3xl">{{ product.price | number : "1.0-0" }}</span>
+            <span class="text-sm text-gray-500 align-top">
+              {{ product.price | number : ".2-2" | slice : -3 }}
+            </span>
+          </span>
+        </div>
+        <div class="flex items-center mb-2">
+          <div class="flex items-center text-yellow-500">
+            @for (star of [1, 2, 3, 4, 5] ; track $index) {
+              <ng-container >
+                <i
+                  class="fas fa-star"
+                  [ngClass]="{
+                    'text-yellow-500': product.rating.rate >= star,
+                    'text-gray-300': product.rating.rate < star
+                  }"
+                ></i>
+              </ng-container>
+            }
+            
+          </div>
+          <span class="text-gray-600 text-sm ml-2">{{ product.rating.count }}</span>
+        </div>
+        <button
+          (click)="addToCart(product)"
+          class="bg-yellow-500 transition-all bottom-0 hover:bg-yellow-600 text-gray-700 px-3 py-2 rounded-lg flex items-center justify-center"
+        >
+          <i class="fas fa-shopping-cart mr-2 text-black"></i>
+          {{ isProductInCart(product.id) ? 'Remove from Cart' : 'Add to Cart' }}
+
+        </button>
+      </div>
+      <button
+      (click)="addToWishlist(product)"
+      class="absolute top-2 right-2 p-2 rounded-full text-red-600 shadow-md focus:outline-none"
+      [ngClass]="{
+        'bg-yellow-500  hover:bg-yellow-600': !isProdInWish( product.id ),
+        'bg-white  hover:bg-white': isProdInWish(
+          product.id
+        )
+      }"
+      aria-label="Add to Wishlist"
+    >
+    @if (isProdInWish( product.id )) {
+      <i class=" fas fa-heart "></i>
+    }@else {
+      <i class=" far fa-heart "></i>
+    }
+     
+    </button>
+    </div>
+  </ng-template>
+</p-carousel>

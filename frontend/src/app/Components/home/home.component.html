@@ -1,0 +1,26 @@
+<div class=" m-auto mb-16 ">
+  <div class="carousel-section text-center h-[500px] py-32">
+    <button class="mt-32 mr-20 bg-[#c898a6] hover:bg-[#fdc7d7] transition text-white px-10 py-5 rounded" 
+    [routerLink]="['/products']"
+    >shop Now</button>
+  </div>
+
+  <app-product-carousel></app-product-carousel>
+
+  <div class=" justify-center items-center flex gap-5 my-24 px-12 m-auto ">
+    <app-product-card title="Electronics accessories" category="electronics"></app-product-card>
+    <app-product-card title="Men's Clothes" category="men's clothing"></app-product-card>
+    <app-product-card title="Women's Clothes" category="women's clothing"></app-product-card>
+    <app-product-card title="Accessories" category="jewelery"></app-product-card>
+  </div>
+    
+  <div class="container mx-auto px-4 py-8">
+    <app-electronics-section></app-electronics-section>
+    <app-clothing-section class="mt-8"></app-clothing-section>
+  </div>
+  <div class="container mx-auto px-4 py-8">
+    <!-- Other sections -->
+    <app-top-brands-section class="mt-8"></app-top-brands-section>
+  </div>
+  
+</div>

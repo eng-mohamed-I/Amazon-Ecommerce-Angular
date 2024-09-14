@@ -1,0 +1,32 @@
+.carousel-container {
+    padding: 2rem;
+  }
+  
+  .product-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    height: 400px;
+  }
+  
+  .product-image img {
+    width: 200px;
+    border-radius: 4px;
+    height: 200px;
+  }
+  
+  .product-detail {
+    margin-top: 1rem;
+  }
+  .customSnackbar {
+    background-color: #990e0e; /* Dark background */
+    color: #14c45b; /* White text */
+    font-size: 16px; /* Custom font size */
+    border-radius: 40px; /* Rounded corners */
+    padding: 120px; /* Padding inside snackbar */
+  }
